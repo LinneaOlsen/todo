@@ -11,6 +11,8 @@ class Todo
   property :description,  String
   property :importance,   Boolean
   property :urgent,       Boolean
+  property :completed,    Boolean
+  property :archived,     Boolean
 end
 
 class MindTheCodeApp < Sinatra::Application
@@ -26,12 +28,18 @@ class MindTheCodeApp < Sinatra::Application
   # CONSTANT = ConstantObject.new
 
   get '/' do
-    @todos = Todo.all
+    @todos = Todo.all(:archived => nil)
     erb :index
   end
 
   get '/new' do
     erb :new
+  end
+
+
+  get '/archived' do
+    @todos = Todo.all(:archived => true)
+    erb :index
   end
 
   post '/' do
@@ -56,6 +64,30 @@ class MindTheCodeApp < Sinatra::Application
 
     @todos = Todo.all(:order =>[sorting])
     erb :index
+  end
+
+  get '/todo/done/:todo_id' do |todo_id|
+    "Hello World #{todo_id}"
+    todo = Todo.get(todo_id) 
+    todo.completed = true 
+    todo.inspect
+
+    if todo.save
+      redirect '/'
+    else
+      redirect '/new'
+    end
+  end
+
+  get '/todo/archived' do 
+    @todos = Todo.all 
+      @todos.each do |todo| 
+        if todo.completed == true
+          todo.archived = true
+          todo.save
+        end
+      end
+        redirect '/'
   end
 
   # ROUTING EXAMPLES

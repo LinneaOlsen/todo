@@ -37,6 +37,10 @@
 				<a href="/order/urgent/desc"><i class="flaticon-chevron22"></i></a>
 				<a href="/order/urgent/asc"><i class="flaticon-chevron17"></i></a>
 			</th>
+			<th>Done? 
+				<a href="/order/completed/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/completed/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
 		</tr>
 	<% @todos.each do |todo| %>		
 		<tr>
@@ -45,13 +49,20 @@
 			<td><%= todo.description %></td>
 			<td><%= todo.time %></td>
 			<td><%= todo.importance %></td>
-			<td>
-				<% if todo.urgent %>
-				urgent
+			<td><% if todo.urgent %>Urgent
 				<% end %>
+			</td>
+			<td><a href="/todo/done/<%= todo.id %>" type="button" class="
+				<% if todo.completed == true %> 
+					btn btn-info">Completed  
+				<% else %>
+					btn btn-success">Done
+				<% end %>
+			</a></tb>
+
 		</tr>
 	<% end %>
 	</table>
-
+		<a href="/todo/archived" type="button" class="btn btn-info">Archived Completed</a>
 	</div>
 </div>
