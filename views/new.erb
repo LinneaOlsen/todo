@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="jumbotron">
+	  <h1>Add item</h1>
+	  <p>Write what you would like to do today and describe it! </p>
+	  <p><a class="btn btn-primary btn-lg" href="/" role="button">Go Back</a></p>
+	</div>
+
+	<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Todos</div>
+	<div class="panel-body">
+		<form action="/" method="post" accept-charset="utf-8">
+			<p>Title: <input type="text" name="todo[title]" /></p>
+			<p>Time: <input type="text" name="todo[time]" /></p>
+			<p>Description:</br> <textarea name="todo[description]" rows="3" cols="40"></textarea></p>
+
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="todo[importance]" value="true">Important?
+				</label>
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="todo[urgent]" value="true">Urgent?
+				</label>
+			</div>
+			<p><input type="submit" value="Add To-Do!" class="btn btn-success"/></p>
+
+
+		</form>
+	</div>
+</div>
+
+
+
+	

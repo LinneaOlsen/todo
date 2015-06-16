@@ -1,0 +1,57 @@
+<div class="container">
+	<div class="jumbotron">
+	  <h1>What shall we do today?</h1>
+	  <p>...</p>
+	  <p><a class="btn btn-primary btn-lg" href="/new" role="button">Add Thingie!</a></p>
+	</div>
+
+	<div class="panel panel-default">
+	<!-- Default panel contents -->
+	<div class="panel-heading">Todos</div>
+	<div class="panel-body">
+
+	<!-- Table -->
+	<table class="table">
+		<tr>
+			<th>ID
+				<a href="/order/id/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/id/asc"><i class="flaticon-chevron17"></i></a>
+			</th>	
+			<th>Title
+				<a href="/order/title/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/title/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
+			<th>Description
+				<a href="/order/description/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/description/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
+			<th>Time
+				<a href="/order/time/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/time/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
+			<th>Importance
+				<a href="/order/importance/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/importance/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
+			<th>Urgency
+				<a href="/order/urgent/desc"><i class="flaticon-chevron22"></i></a>
+				<a href="/order/urgent/asc"><i class="flaticon-chevron17"></i></a>
+			</th>
+		</tr>
+	<% @todos.each do |todo| %>		
+		<tr>
+			<td><%= todo.id %></td>
+			<td><%= todo.title %></td>
+			<td><%= todo.description %></td>
+			<td><%= todo.time %></td>
+			<td><%= todo.importance %></td>
+			<td>
+				<% if todo.urgent %>
+				urgent
+				<% end %>
+		</tr>
+	<% end %>
+	</table>
+
+	</div>
+</div>
