@@ -28,12 +28,18 @@ class MindTheCodeApp < Sinatra::Application
   # CONSTANT = ConstantObject.new
 
   get '/' do
-    @todos = Todo.all
+    @todos = Todo.all(:archived => nil)
     erb :index
   end
 
   get '/new' do
     erb :new
+  end
+
+
+  get '/archived' do
+    @todos = Todo.all(:archived => true)
+    erb :index
   end
 
   post '/' do
